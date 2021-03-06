@@ -7,7 +7,7 @@ import com.haitunhv.xr.until.Strings;
 import java.util.List;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/2/28 17:59
  */
 public abstract class BaseServiceImpl<T> implements BaseService<T> {

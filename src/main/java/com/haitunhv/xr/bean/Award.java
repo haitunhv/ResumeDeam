@@ -1,7 +1,7 @@
 package com.haitunhv.xr.bean;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/1 22:08
  */
 public class Award extends BaseBean {

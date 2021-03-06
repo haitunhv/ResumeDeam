@@ -1,7 +1,7 @@
 package com.haitunhv.xr.bean;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/2/21 23:41
  */
 public class Website extends BaseBean {

@@ -6,7 +6,7 @@ import com.haitunhv.xr.dao.impl.WebsiteDaoImpl;
 import com.haitunhv.xr.service.WebsiteService;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/2/28 16:07
  */
 public class WebsiteServiceImpl extends BaseServiceImpl<Website> implements WebsiteService {

@@ -6,7 +6,7 @@ import com.haitunhv.xr.dao.impl.SkillDaoImpl;
 import com.haitunhv.xr.service.SkillServer;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/2/28 20:17
  */
 public class SkillServerImpl extends BaseServiceImpl<Skill> implements SkillServer {

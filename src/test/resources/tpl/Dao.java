@@ -1,10 +1,10 @@
 package com.haitunhv.xr.dao;
 
-import com.haitunhv.xr.bean.Award;
+import com.haitunhv.xr.bean.#0#;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/1 22:09
  */
-public interface AwardDao extends BaseDao<Award> {
+public interface #0#Dao extends BaseDao<#0#> {
 }

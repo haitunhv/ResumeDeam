@@ -7,7 +7,7 @@ import com.haitunhv.xr.dao.impl.EducationDaoImpl;
 import com.haitunhv.xr.service.EducationService;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/2/28 15:47
  */
 public class EducationServiceImpl extends BaseServiceImpl<Education> implements EducationService {

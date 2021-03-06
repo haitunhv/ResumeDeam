@@ -6,7 +6,7 @@ import com.haitunhv.xr.dao.impl.AwardDaoImpl;
 import com.haitunhv.xr.service.AwardService;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/1 22:16
  */
 public class AwardServiceImpl extends BaseServiceImpl<Award> implements AwardService {

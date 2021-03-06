@@ -1,7 +1,7 @@
 package com.haitunhv.xr.until;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/4 22:29
  */
 public class Strings {

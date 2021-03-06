@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/1 22:09
  */
 public class AwardDaoImpl extends BaseDaoImpl<Award> implements AwardDao {

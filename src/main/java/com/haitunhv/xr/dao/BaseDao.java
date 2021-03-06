@@ -4,7 +4,7 @@ package com.haitunhv.xr.dao;
 import java.util.List;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/2/28 17:25
  */
 public interface BaseDao<T> {

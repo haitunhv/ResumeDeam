@@ -1,10 +1,10 @@
 package com.haitunhv.xr.service;
 
-import com.haitunhv.xr.bean.Award;
+import com.haitunhv.xr.bean.#0#;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/1 22:16
  */
-public interface AwardService extends BaseService<Award> {
+public interface #0#Service extends BaseService<#0#> {
 }

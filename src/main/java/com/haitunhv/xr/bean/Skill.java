@@ -3,7 +3,7 @@ package com.haitunhv.xr.bean;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/2/28 19:29
  */
 public class Skill extends BaseBean {
