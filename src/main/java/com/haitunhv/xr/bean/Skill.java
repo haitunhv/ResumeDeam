@@ -1,6 +1,7 @@
 package com.haitunhv.xr.bean;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.haitunhv.xr.bean.base.BaseBean;
 
 /**
  * @Author: haitunhv

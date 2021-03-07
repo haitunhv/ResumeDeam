@@ -1,4 +1,4 @@
-package com.haitunhv.xr.bean;
+package com.haitunhv.xr.bean.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -11,7 +11,7 @@ import java.util.Date;
  * @Author: haitunhv
  * @Date: 2021/2/21 23:41
  */
-public class BaseBean {
+public abstract class BaseBean {
     private Integer id;
     private Date createdTime;
 

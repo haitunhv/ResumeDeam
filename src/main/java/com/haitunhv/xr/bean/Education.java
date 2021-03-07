@@ -1,21 +1,15 @@
 package com.haitunhv.xr.bean;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.haitunhv.xr.bean.base.DateBean;
 
 /**
  * @Author: haitunhv
  * @Date: 2021/2/23 22:00
  */
-public class Education extends BaseBean {
+public class Education extends DateBean {
     private String name;
     private String intro;
-    private Date beginDay;
-    private Date endDay;
     private Integer type;
 
     @JsonIgnore
@@ -47,22 +41,6 @@ public class Education extends BaseBean {
 
     public void setIntro(String intro) {
         this.intro = intro;
-    }
-
-    public Date getBeginDay() {
-        return beginDay;
-    }
-
-    public void setBeginDay(Date beginDay) {
-        this.beginDay = beginDay;
-    }
-
-    public Date getEndDay() {
-        return endDay;
-    }
-
-    public void setEndDay(Date endDay) {
-        this.endDay = endDay;
     }
 
     public Integer getType() {

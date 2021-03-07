@@ -1,5 +1,7 @@
 package com.haitunhv.xr.bean;
 
+import com.haitunhv.xr.bean.base.BaseBean;
+
 /**
  * @Author: haitunhv
  * @Date: 2021/2/21 23:41
