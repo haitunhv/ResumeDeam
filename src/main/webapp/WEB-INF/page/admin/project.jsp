@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>小码哥简历管理-工作经验</title>
+    <title>小码哥简历管理-项目经验</title>
     <%@ include file="common/head.jsp"%>
 </head>
 
@@ -17,7 +17,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>工作经验</h2>
+                            <h2>项目经验</h2>
                         </div>
                         <div class="body table-responsive">
                             <div class="menus">
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
 
-                            <c:if test="${not empty experiences}">
+                            <c:if test="${not empty projects}">
                                 <table class="table table-bordered table-hover table-striped">
                                     <thead>
                                     <tr>
@@ -46,8 +46,10 @@
                                                 <label><input type="checkbox"><span class="lever switch-col-blue"></span></label>
                                             </div>
                                         </th>
-                                        <th>职位</th>
+                                        <th>名称</th>
+                                        <th>图片</th>
                                         <th>公司</th>
+                                        <th>网址</th>
                                         <th>开始</th>
                                         <th>结束</th>
                                         <th>简介</th>
@@ -55,37 +57,39 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <form id="remove-form" action="${ctx}/experience/remove" method="post">
-                                        <c:forEach items="${experiences}" var="experience">
+                                    <form id="remove-form" action="${ctx}/project/remove" method="post">
+                                        <c:forEach items="${projects}" var="project">
                                             <tr>
                                                 <td>
                                                     <div class="switch">
-                                                        <label><input name="id" value="${experience.id}" type="checkbox"><span class="lever switch-col-blue"></span></label>
+                                                        <label><input name="id" value="${project.id}" type="checkbox"><span class="lever switch-col-blue"></span></label>
                                                     </div>
                                                 </td>
-                                                <td>${experience.job}</td>
+                                                <td>${project.name}</td>
+                                                <td><img src="${ctx}/${project.image}"></td>
                                                 <c:choose>
-                                                    <c:when test="${empty experience.company.website}">
-                                                        <td>${experience.company.name}</td>
+                                                    <c:when test="${empty project.website}">
+                                                        <td>${project.name}</td>
                                                     </c:when>
                                                     <c:otherwise>
                                                         <td>
-                                                            <a href="${experience.company.website}" target="_blank">${experience.company.name}</a>
+                                                            <a href="${project.website}" target="_blank">${project.name}</a>
                                                         </td>
                                                     </c:otherwise>
                                                 </c:choose>
 
-                                                <td><fmt:formatDate pattern="yyyy-MM-dd" value="${experience.beginDay}" /></td>
-                                                <td><fmt:formatDate pattern="yyyy-MM-dd" value="${experience.endDay}" /></td>
-                                                <td>${experience.intro}</td>
+                                                <td>${project.website}</td>
+                                                <td><fmt:formatDate pattern="yyyy-MM-dd" value="${project.beginDay}" /></td>
+                                                <td><fmt:formatDate pattern="yyyy-MM-dd" value="${project.endDay}" /></td>
+                                                <td>${project.intro}</td>
                                                 <td>
                                                     <button type="button" class="btn bg-blue waves-effect btn-xs"
-                                                            onclick="edit(${experience.JSON})">
+                                                            onclick="edit(${project.JSON})">
                                                         <i class="material-icons">edit</i>
                                                         <span>编辑</span>
                                                     </button>
                                                     <button type="button" class="btn bg-pink waves-effect btn-xs"
-                                                            onclick="remove('${experience.id}','${experience.job}')">
+                                                            onclick="remove('${project.id}','${project.name}')">
                                                         <i class="material-icons">delete</i>
                                                         <span>删除</span>
                                                     </button>
@@ -109,25 +113,47 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">添加工作经验</h4>
+                    <h4 class="modal-title">添加项目经验</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-validation" method="post" action="${ctx}/experience/save">
+                    <form class="form-validation"
+                          enctype="multipart/form-data"
+                          method="post"
+                          action="${ctx}/project/save">
                         <input type="text" style="display: none" name="id">
+                        <input type="text" style="display: none" name="image">
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 form-control-label">
-                                <label for="job">岗位</label>
+                                <label for="name">名称</label>
                             </div>
                             <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" id="job" name="job" maxlength="20" class="form-control"
+                                        <input type="text" id="name" name="name" maxlength="20" class="form-control"
                                                placeholder="岗位"
                                                required>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 form-control-label">
+                                <label>图片</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                                <div class="form-group">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-new thumbnail">
+                                            <img src="${ctx}/asset/admin/img/noimage.png" alt="">
+                                        </div>
+                                        <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                        <i class="material-icons clear fileinput-exists" data-dismiss="fileinput">close</i>
+                                        <input type="file" name="imgFile" accept="image/*">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 form-control-label">
                                 <label>公司</label>
@@ -142,7 +168,19 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 form-control-label">
+                                <label for="name">网址</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" id="website" name="website" class="form-control"
+                                               placeholder="网址">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 form-control-label">
                                 <label for="beginDay">开始</label>
@@ -196,7 +234,7 @@
 
     <%@ include file="common/foot.jsp" %>
     <script>
-        $(".menu .list .experience").addClass("active")
+        $(".menu .list .project").addClass("active")
         addValidatorRules('.form-validation')
 
         const  $addFormBox = $('#add-form-box')
@@ -206,14 +244,22 @@
             $addFormBox.modal()
             //重置表单内容
             $addForm[0].reset()
+            //重新设置图片
+            $img.attr("src",'${ctx}/asset/admin/img/noimage.png')
         }
-        function edit(experience) {
+        function edit(project) {
            addModel()
             //填充表单内容
-            for (const k in experience){
-                $addForm.find('[name='+k+']').val(experience[k]);
+            for (const k in project){
+                const $input = $addForm.find('[name=' + k + ']')
+                if ($input.attr('type') === 'file') continue
+                $input.val(json[k])
             }
-            $addForm.find('[name=companyId]').val(experience.company.id)
+            $addForm.find('[name=companyId]').val(project.company.id)
+            // 设置img的值
+            if (json.image) {
+                $img.attr('src', '${ctx}/' + json.image)
+            }
         }
 
         function remove(id,name) {
@@ -228,7 +274,7 @@
                 }
             }).then(willDelete => {
                 if (!willDelete) return;
-            location.href = "${ctx}/experience/remove?id="+id;
+            location.href = "${ctx}/project/remove?id="+id;
                 // swal({
                 //     title: '删除成功',
                 //     text: '【' + name + '】已经被删除！',
