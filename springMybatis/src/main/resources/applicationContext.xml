@@ -60,15 +60,17 @@
     <bean id="txMgr" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    <tx:annotation-driven transaction-manager="txMgr"/>
+    <context:component-scan base-package="com.haitunhv"/>
     <!-- 附加代码 -->
-    <tx:advice id="txAdvice" transaction-manager="txMgr">
-        <tx:attributes>
-            <tx:method name="save*"/>
-        </tx:attributes>
-    </tx:advice>
+<!--    <tx:advice id="txAdvice" transaction-manager="txMgr">-->
+<!--        <tx:attributes>-->
+<!--            <tx:method name="save*"/>-->
+<!--        </tx:attributes>-->
+<!--    </tx:advice>-->
     <!-- 切面 -->
-    <aop:config>
-        <aop:pointcut id="pc" expression="within(com.haitunhv.service..*)"/>
-        <aop:advisor advice-ref="" pointcut-ref="pc"/>
-    </aop:config>
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="pc" expression="within(com.haitunhv.service..*)"/>-->
+<!--        <aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>-->
+<!--    </aop:config>-->
 </beans>
