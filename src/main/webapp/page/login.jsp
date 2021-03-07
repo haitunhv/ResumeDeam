@@ -2,8 +2,15 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
+    <meta charset="UTF-8">
     <title>简历管理-登录</title>
-    <%@ include file="../WEB-INF/page/admin/common/head.jsp"%>
+    <link rel="icon" href="../../asset/admin/img/favicon.png" type="image/x-icon">
+    <link href="../../asset/plugin/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../../asset/plugin/node-waves/waves.css" rel="stylesheet">
+    <link href="../../asset/plugin/animate-css/animate.min.css" rel="stylesheet">
+    <link href="../../asset/admin/css/material-icons.css" rel="stylesheet">
+    <link href="../../asset/admin/css/style.min.css" rel="stylesheet">
+    <link href="../../asset/admin/css/main.css" rel="stylesheet">
 </head>
 
 <body class="login-page">
