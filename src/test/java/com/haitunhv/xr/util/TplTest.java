@@ -16,7 +16,7 @@ import java.util.Map;
 public class TplTest {
     private static final Class[] CLASSES = {Company.class, Project.class, Experience.class};
     private static final Map<String,String> TPL_DIR = new HashMap<>();
-    private static final  String BASE_DIR = "";
+    private static final  String BASE_DIR = "D:\\java\\ResumeDeam\\src\\main\\java\\com\\haitunhv\\xr\\";
     static {
         TPL_DIR.put("Dao",BASE_DIR+"dao");
         TPL_DIR.put("DaoImpl",BASE_DIR+"dao/impl");
@@ -41,7 +41,7 @@ public class TplTest {
                 String className = aClass.getSimpleName();
                 String newText = text.replace("#0#",className);
                 String fileName = className + suffix + ".java";
-                String filepath = BASE_DIR +"/"+ dir + "/"+fileName;
+                String filepath =  dir + "/"+fileName;
                 //写文件
                 File file = new File(filepath);
                 //判断文件是否已经存在
