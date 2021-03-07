@@ -1,6 +1,9 @@
 package com.haitunhv.xr.until;
 
+import com.haitunhv.xr.bean.base.UploadParams;
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
@@ -8,6 +11,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -50,5 +56,37 @@ public class Uploads {
         return imageUrl;
 
 
+    }
+
+    /**
+     * 文件上传参数
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    public static UploadParams parseUploadRequest(HttpServletRequest request) throws Exception{
+        ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
+        upload.setHeaderEncoding("UTF-8");
+
+        List<FileItem> items = upload.parseRequest(request);
+        //非文件参数
+        Map<String,Object> params = new HashMap<>();
+        //文件参数
+        Map<String,FileItem> fileParam = new HashMap<>();
+        //存储到数据库的文件路径
+        for (FileItem item : items) {
+            String fieldName = item.getFieldName();
+            if (item.isFormField()){
+                //非文件参数
+                params.put(fieldName,item.getString("UTF-8"));
+            }else {
+                //文件参数
+                fileParam.put(fieldName,item);
+            }
+        }
+        UploadParams uploadParams = new UploadParams();
+        uploadParams.setFileParams(fileParam);
+        uploadParams.setParams(params);
+        return uploadParams;
     }
 }

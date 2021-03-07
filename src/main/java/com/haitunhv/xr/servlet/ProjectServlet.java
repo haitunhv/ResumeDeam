@@ -3,6 +3,7 @@ package com.haitunhv.xr.servlet;
 import com.haitunhv.xr.bean.Company;
 import com.haitunhv.xr.bean.Project;
 import com.haitunhv.xr.bean.Project;
+import com.haitunhv.xr.bean.base.UploadParams;
 import com.haitunhv.xr.service.CompanyService;
 import com.haitunhv.xr.service.impl.CompanyServiceImpl;
 import com.haitunhv.xr.until.Uploads;
@@ -37,35 +38,16 @@ public class ProjectServlet extends BaseServlet<Project> {
     }
 
     public void save(HttpServletRequest request, HttpServletResponse response) throws Exception{
-
-        ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
-        upload.setHeaderEncoding("UTF-8");
-
-        List<FileItem> items = upload.parseRequest(request);
-        //非文件参数
-        Map<String,Object> params = new HashMap<>();
-        //文件参数
-        Map<String,FileItem> fileParam = new HashMap<>();
-        //存储到数据库的文件路径
-        for (FileItem item : items) {
-            String fieldName = item.getFieldName();
-            if (item.isFormField()){
-                //非文件参数
-                params.put(fieldName,item.getString("UTF-8"));
-            }else {
-                //文件参数
-                fileParam.put(fieldName,item);
-            }
-        }
+        UploadParams uploadParams = Uploads.parseUploadRequest(request);
         Project project = new Project();
-        BeanUtils.populate(project, params);
+        BeanUtils.populate(project, uploadParams.getParams());
 
-        FileItem item = fileParam.get("imgFile");
+        FileItem item = uploadParams.getFileParams().get("imgFile");
         project.setImage(Uploads.uploadImg(item,request,project.getImage()));
 
         //对公司信息做特殊处理
         Company company = new Company();
-        company.setId(Integer.valueOf(params.get("companyId").toString()));
+        company.setId(Integer.valueOf(uploadParams.getParams().get("companyId").toString()));
         project.setCompany(company);
         if (service.save(project)) {
             redirect(request,response,"project/admin");

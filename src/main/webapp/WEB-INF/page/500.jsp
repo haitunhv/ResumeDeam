@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>小码哥教育-500</title>
+    <title>-500</title>
     <%@ include file="admin/common/head.jsp"%>
 </head>
 

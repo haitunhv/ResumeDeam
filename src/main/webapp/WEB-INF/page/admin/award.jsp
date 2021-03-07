@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>小码哥简历管理-获奖成就</title>
+    <title>简历管理-获奖成就</title>
     <%@ include file="common/head.jsp"%>
 </head>
 

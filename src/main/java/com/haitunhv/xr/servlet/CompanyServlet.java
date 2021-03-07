@@ -2,6 +2,7 @@ package com.haitunhv.xr.servlet;
 
 import com.haitunhv.xr.bean.Award;
 import com.haitunhv.xr.bean.Company;
+import com.haitunhv.xr.bean.base.UploadParams;
 import com.haitunhv.xr.until.Uploads;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.fileupload.FileItem;
@@ -30,30 +31,12 @@ public class CompanyServlet extends BaseServlet<Company> {
     }
 
     public void save(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
-        upload.setHeaderEncoding("UTF-8");
-
-        List<FileItem> items = upload.parseRequest(request);
-        //非文件参数
-        Map<String,Object> params = new HashMap<>();
-        //文件参数
-        Map<String,FileItem> fileParam = new HashMap<>();
-        //存储到数据库的文件路径
-        for (FileItem item : items) {
-            String fieldName = item.getFieldName();
-            if (item.isFormField()){
-                //非文件参数
-                params.put(fieldName,item.getString("UTF-8"));
-            }else {
-                //文件参数
-                fileParam.put(fieldName,item);
-            }
-        }
+        UploadParams uploadParams = Uploads.parseUploadRequest(request);
 
         Company company = new Company();
-        BeanUtils.populate(company,params);
+        BeanUtils.populate(company,uploadParams.getParams());
 
-        FileItem item = fileParam.get("logoFile");
+        FileItem item = uploadParams.getFileParams().get("logoFile");
         company.setLogo(Uploads.uploadImg(item,request,company.getLogo()));
 
         if (service.save(company)){
