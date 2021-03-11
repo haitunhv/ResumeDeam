@@ -49,6 +49,7 @@ public class UserServlet extends BaseServlet<User> {
         BeanUtils.populate(user,request.getParameterMap());
         user = ((UserService) service).get(user);
         if (user != null){
+            request.getSession().setAttribute("user",user);
             //登录成功
             redirect(request,response,"user/admin");
         }else {
