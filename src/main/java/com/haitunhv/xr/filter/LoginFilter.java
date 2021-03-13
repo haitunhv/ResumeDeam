@@ -22,7 +22,11 @@ public class LoginFilter implements Filter {
         String uri = request.getRequestURI();
         if (uri.contains("/asset/")){
             chain.doFilter(req, resp);
-        }else if (uri.contains("/admin") || uri.contains("/remove") || uri.contains("/save")){
+        }else if (uri.contains("/admin")
+                || uri.contains("/remove")
+                || uri.contains("/save")
+                || uri.contains("/user/password")
+                || uri.contains("/user/updatePassword")){
             Object user = request.getSession().getAttribute("user");
             if (user != null){
                 chain.doFilter(req, resp);

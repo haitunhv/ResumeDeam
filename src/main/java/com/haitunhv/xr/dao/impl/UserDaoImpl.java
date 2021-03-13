@@ -26,7 +26,7 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
         ags.add(bean.getBirthday());
         ags.add(bean.getAddress());
         ags.add(bean.getPhone());
-        ags.add(bean.getJod());
+        ags.add(bean.getJob());
         ags.add(bean.getTrait());
         ags.add(bean.getInterests());
         String sql = "";

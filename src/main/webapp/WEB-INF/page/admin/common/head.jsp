@@ -2,6 +2,7 @@
 <% request.setAttribute("ctx",request.getContextPath());%>
 <meta charset="UTF-8">
 <link rel="icon" href="${ctx}/asset/admin/img/favicon.png" type="image/x-icon">
+<link href="${ctx}/asset/plugin/bootstrap-tagsinput/bootstrap-tagsinput.css">
 <link href="${ctx}/asset/plugin/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link href="${ctx}/asset/plugin/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet">
 <link href="${ctx}/asset/plugin/node-waves/waves.css" rel="stylesheet">

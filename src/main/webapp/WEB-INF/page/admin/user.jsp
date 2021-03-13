@@ -4,9 +4,8 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>简历管理-教育信息</title>
+    <title>简历管理-个人信息</title>
     <%@ include file="common/head.jsp"%>
-    <link href="${ctx}/asset/plugin/bootstrap-tagsinput/bootstrap-tagsinput.css">
 </head>
 
 <body class="theme-blue">
@@ -82,7 +81,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="text" id="job" name="job"
-                                                       value="${user.jod}" maxlength="20" class="form-control" placeholder="工作">
+                                                       value="${user.job}" maxlength="20" class="form-control" placeholder="工作">
                                             </div>
                                         </div>
                                     </div>
@@ -137,8 +136,9 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="date" id="birthday"
-                                                       value="${user.birthday}"
+                                                       value="<fmt:formatDate pattern="yyyy-MM-dd" value="${user.birthday}"/>"
                                                        name="birthday" class="form-control">
+
                                             </div>
                                         </div>
                                     </div>

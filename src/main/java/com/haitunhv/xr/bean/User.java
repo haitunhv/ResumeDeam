@@ -17,7 +17,7 @@ public class User extends BaseBean {
     private Date birthday;
     private String address;
     private String phone;
-    private String jod;
+    private String job;
 
     public String getPassword() {
         return password;
@@ -83,12 +83,12 @@ public class User extends BaseBean {
         this.phone = phone;
     }
 
-    public String getJod() {
-        return jod;
+    public String getJob() {
+        return job;
     }
 
-    public void setJod(String jod) {
-        this.jod = jod;
+    public void setJob(String job) {
+        this.job = job;
     }
 
     public String getTrait() {

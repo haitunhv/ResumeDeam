@@ -42,14 +42,48 @@ public class UserServlet extends BaseServlet<User> {
         user.setEmail(LoginUser.getEmail());
         user.setPhoto(Uploads.uploadImg(item,request,user.getPhoto()));
         if (service.save(user)){
+            request.getSession().setAttribute("user",user);
             redirect(request,response,"user/admin");
         }else {
             forwardError(request,response,"用户信息保存失败");
         }
 
     }
+
+    /**
+     * 退出
+     * @param request
+     * @param response
+     * @throws Exception
+     */
+    public void logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        //清除session
+        request.getSession().removeAttribute("user");
+        redirect(request,response,"page/login.jsp");
+    }
     public void remove(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+    }
+    public void password(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        forward(request,response,"admin/password.jsp");
+    }
+    public void updatePassword(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String oldPassword = request.getParameter("oldPassword");
+        //与session比较
+        User user = (User) request.getSession().getAttribute("user");
+        if(!oldPassword.equals(user.getPassword())){
+            forwardError(request,response,"旧密码不正确");
+            return;
+        }
+        //保存新密码
+        String newPassword = request.getParameter("newPassword");
+        user.setPassword(newPassword);
+        if (service.save(user)){
+            redirect(request,response,"page/login.jsp");
+        }else {
+            forwardError(request,response,"保存密码失败");
+        }
     }
     public void login(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //验证验证码
