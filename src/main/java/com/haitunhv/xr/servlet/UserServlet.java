@@ -4,7 +4,13 @@ import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
 import com.haitunhv.xr.bean.User;
 import com.haitunhv.xr.bean.base.UploadParams;
+import com.haitunhv.xr.service.AwardService;
+import com.haitunhv.xr.service.SkillServer;
 import com.haitunhv.xr.service.UserService;
+import com.haitunhv.xr.service.WebsiteService;
+import com.haitunhv.xr.service.impl.AwardServiceImpl;
+import com.haitunhv.xr.service.impl.SkillServerImpl;
+import com.haitunhv.xr.service.impl.WebsiteServiceImpl;
 import com.haitunhv.xr.until.Uploads;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.fileupload.FileItem;
@@ -12,17 +18,39 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.imageio.ImageIO;
+import javax.jws.WebService;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
 
 @WebServlet("/user/*")
 public class UserServlet extends BaseServlet<User> {
+    private SkillServer skillServer = new SkillServerImpl();
+    private AwardService awardService = new AwardServiceImpl();
+    private WebsiteService websiteService = new WebsiteServiceImpl();
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String uri = request.getRequestURI();
+        String[] cmps = uri.split("/");
+        String methodName = "/" + cmps[cmps.length - 1];
+        if (methodName.equals(request.getContextPath())){
+            try {
+                front(request,response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else {
+            super.doGet(request, response);
+        }
+    }
 
     public void admin(HttpServletRequest request, HttpServletResponse response) throws Exception{
         request.setAttribute("user",service.list().get(0));
@@ -61,9 +89,6 @@ public class UserServlet extends BaseServlet<User> {
         //清除session
         request.getSession().removeAttribute("user");
         redirect(request,response,"page/login.jsp");
-    }
-    public void remove(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
     }
     public void password(HttpServletRequest request, HttpServletResponse response) throws Exception {
         forward(request,response,"admin/password.jsp");
@@ -134,5 +159,22 @@ public class UserServlet extends BaseServlet<User> {
             //将图片数据写回到客户端
             ImageIO.write(image,"jpg",response.getOutputStream());
         }
+    }
+    public void front(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        //用户信息
+        User user = service.list().get(0);
+        request.setAttribute("user",user);
+        //个人特质
+        request.setAttribute("trait",user.getTrait().split(","));
+        //兴趣爱好
+        request.setAttribute("interests",user.getInterests().split(","));
+
+        //专业技能
+        request.setAttribute("skills",skillServer.list());
+        //获奖成就
+        request.setAttribute("awards",awardService.list());
+        //网站底部信息
+        request.setAttribute("footer",websiteService.list().get(0));
+        forward(request,response,"front/user.jsp");
     }
 }

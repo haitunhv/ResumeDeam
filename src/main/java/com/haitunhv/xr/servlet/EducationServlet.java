@@ -17,6 +17,13 @@ import java.util.List;
 public class EducationServlet extends BaseServlet<Education> {
 
 
+    public void front(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request.setAttribute("educations", service.list());
+
+        //转发
+        forward(request,response,"front/education.jsp");
+    }
+
     public void admin(HttpServletRequest request, HttpServletResponse response) throws Exception {
         request.setAttribute("educations", service.list());
 

@@ -25,6 +25,12 @@ import java.util.Map;
 public class ExperienceServlet extends BaseServlet<Experience> {
     private CompanyService companyService = new CompanyServiceImpl();
 
+    public void front(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        List<Experience> experiences = service.list();
+        request.setAttribute("experiences",experiences);
+        //转发
+        forward(request,response,"front/experience.jsp");
+    }
     public void admin(HttpServletRequest request, HttpServletResponse response) throws Exception{
         List<Experience> experiences = service.list();
         List<Company> companies = companyService.list();
