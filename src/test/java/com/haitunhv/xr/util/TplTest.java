@@ -1,9 +1,6 @@
 package com.haitunhv.xr.util;
 
-import com.haitunhv.xr.bean.Company;
-import com.haitunhv.xr.bean.Experience;
-import com.haitunhv.xr.bean.Project;
-import com.haitunhv.xr.bean.User;
+import com.haitunhv.xr.bean.*;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -15,7 +12,7 @@ import java.util.Map;
  * @Date: 2021/3/6 16:01
  */
 public class TplTest {
-    private static final Class[] CLASSES = {User.class};
+    private static final Class[] CLASSES = {Contact.class};
     private static final Map<String,String> TPL_DIR = new HashMap<>();
     private static final  String BASE_DIR = "D:\\java\\ResumeDeam\\src\\main\\java\\com\\haitunhv\\xr\\";
     static {

@@ -20,7 +20,7 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
         //放行登录页
         String uri = request.getRequestURI();
-        if (uri.contains("/asset/")){
+        if (uri.contains("/asset/") || uri.contains("/contact/save")){
             chain.doFilter(req, resp);
         }else if (uri.contains("/admin")
                 || uri.contains("/remove")

@@ -11,7 +11,7 @@
         <div class="error-code">500</div>
         <div class="error-message">服务器正忙，请稍后再试...</div>
         <div class="button-place">
-            <a href="#" class="btn btn-default btn-lg waves-effect">回到首页</a>
+            <a href="${ctx}" class="btn btn-default btn-lg waves-effect">回到首页</a>
         </div>
     </div>
 </body>
