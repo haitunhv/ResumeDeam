@@ -14,7 +14,7 @@
         </div>
         <div class="card">
             <div class="body">
-                <form class="form-validation" method="post" action="${ctx}/user/login">
+                <form class="form-validation" method="post" >
                     <div class="msg">赶紧登录吧</div>
                     <div class="input-group form-group form-float">
                         <span class="input-group-addon">
@@ -62,8 +62,36 @@
         addValidatorRules('.form-validation',function () {
 
             const pwd = $("#originPassword").val();
-           $("[name=password]").val(md5(pwd))
-            return true
+
+            //
+            swal({
+                title:'正在登录',
+                text:'',
+                icon:'info',
+                button:false,
+                closeOnClickOutside:false
+            })
+            $.post("${ctx}/user/login",{
+                email:$('[name=email]').val(),
+                password:md5(pwd),
+                captcha:$('[name=captcha]').val()
+            },function (data) {
+                if (data.success){
+                    location.href = "${ctx}/user/admin"
+                }else {
+                    swal({
+                        title: "提示",
+                        text: data.msg,
+                        icon: 'warning',
+                        dangerMode: true,
+                        buttons: {
+                            confirm: '确定'
+                        },
+                        timer:1500
+                    })
+                }
+            },'json')
+            return false
         })
         $("#captcha").click(function () {
             $(this).attr("src",'${ctx}/user/captcha?time='+new Date().getTime())

@@ -1,5 +1,6 @@
 package com.haitunhv.xr.servlet;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
 import com.haitunhv.xr.bean.User;
@@ -116,23 +117,31 @@ public class UserServlet extends BaseServlet<User> {
 
         //从session中取出验证码
         String code = (String) request.getSession().getAttribute("code");
+        response.setContentType("text/json;charset=UTF-8");
+        Map<String,Object> result = new HashMap<>();
         if (!captcha.equals(code)){
-            forwardError(request,response,"验证码不正确");
-            return;
-        }
-
-        //验证用户名密码
-        User user = new User();
-        BeanUtils.populate(user,request.getParameterMap());
-        user = ((UserService) service).get(user);
-        if (user != null){
-            request.getSession().setAttribute("user",user);
-            //登录成功
-            redirect(request,response,"user/admin");
+//            forwardError(request,response,"验证码不正确");
+            result.put("success",false);
+            result.put("msg","验证码不正确");
         }else {
-            //登录失败
-            forwardError(request,response,"邮箱或密码错误");
+            //验证用户名密码
+            User user = new User();
+            BeanUtils.populate(user,request.getParameterMap());
+            user = ((UserService) service).get(user);
+            if (user != null){
+                request.getSession().setAttribute("user",user);
+                result.put("success",true);
+                //登录成功
+//            redirect(request,response,"user/admin");
+            }else {
+                //登录失败
+                result.put("success",false);
+                result.put("msg","邮箱或密码错误");
+//            forwardError(request,response,"邮箱或密码错误");
+            }
         }
+        response.getWriter().write(new ObjectMapper().writeValueAsString(result));
+
     }
 
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {

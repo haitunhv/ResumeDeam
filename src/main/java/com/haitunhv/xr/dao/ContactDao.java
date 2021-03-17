@@ -12,4 +12,5 @@ import java.util.List;
  */
 public interface ContactDao extends BaseDao<Contact> {
     ContactListResult list(ContactListParam param);
+    boolean read(Integer id);
 }

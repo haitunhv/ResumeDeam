@@ -1,5 +1,9 @@
 package com.haitunhv.xr.bean.base;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -24,5 +28,15 @@ public abstract class DateBean extends BaseBean {
 
     public void setEndDay(Date endDay) {
         this.endDay = endDay;
+    }
+
+    public String getJSON() {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
+            return objectMapper.writeValueAsString(this).replace("\"","'");
+        } catch (JsonProcessingException e) {
+            return null;
+        }
     }
 }

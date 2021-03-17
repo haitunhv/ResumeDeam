@@ -100,14 +100,16 @@ public class ContactDaoImpl extends BaseDaoImpl<Contact> implements ContactDao {
                 return rs.getInt(1);
             }
         },ags.toArray());
-
-        result.setTotalCount((count + pageSize -1)/pageSize);
+        Integer totalPages = (count + pageSize -1)/pageSize;
+        result.setTotalCount(totalPages);
         result.setTotalPages(count);
 
 
         sql.append("LIMIT ?,?");
         Integer pageNo = param.getPageNo();
         if (pageNo == null){
+            pageNo = 1;
+        }else if (totalPages > count){
             pageNo = 1;
         }
 
@@ -119,5 +121,11 @@ public class ContactDaoImpl extends BaseDaoImpl<Contact> implements ContactDao {
 
         result.setContacts(contactsList);
         return result;
+    }
+
+    @Override
+    public boolean read(Integer id) {
+        String sql = "UPDATE contact SET already_read = 1 WHERE id = ?";
+        return Dbs.getTpl().update(sql,id)>0;
     }
 }
