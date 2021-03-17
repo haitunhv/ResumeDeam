@@ -23,7 +23,7 @@ public abstract class BaseBean {
         this.id = id;
     }
 
-    @JsonIgnore
+   // @JsonIgnore
     public Date getCreatedTime() {
         return createdTime;
     }

@@ -47,7 +47,7 @@ public class SkillDaoImpl extends BaseDaoImpl<Skill> implements SkillDao {
     @Override
     public List<Skill> list(){
         String sql = "SELECT id,created_time,name,level FROM skill";
-        return Dbs.getTpl().query(sql,new BeanPropertyRowMapper<>(Skill.class));
+        return  Dbs.getTpl().query(sql,new BeanPropertyRowMapper<>(Skill.class));
     }
 
     @Override

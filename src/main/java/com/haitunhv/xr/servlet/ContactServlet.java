@@ -3,6 +3,8 @@ package com.haitunhv.xr.servlet;
 import com.haitunhv.xr.bean.Company;
 import com.haitunhv.xr.bean.Contact;
 import com.haitunhv.xr.bean.base.UploadParams;
+import com.haitunhv.xr.bean.vo.ContactListParam;
+import com.haitunhv.xr.service.ContactService;
 import com.haitunhv.xr.service.UserService;
 import com.haitunhv.xr.service.WebsiteService;
 import com.haitunhv.xr.service.impl.UserServiceImpl;
@@ -23,11 +25,16 @@ public class ContactServlet extends BaseServlet<Contact> {
     private UserService userService = new UserServiceImpl();
     private WebsiteService websiteService = new WebsiteServiceImpl();
 
-    public void admin(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void front(HttpServletRequest request, HttpServletResponse response) throws Exception{
 
         request.setAttribute("user",userService.list().get(0));
         request.setAttribute("footer",websiteService.list().get(0).getFooter());
         forward(request,response,"front/contact.jsp");
+    }
+    public void admin(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        ContactListParam param = new ContactListParam();
+        request.setAttribute("contacts",((ContactService)service).list(param));
+        forward(request,response,"admin/contact.jsp");
     }
 
     public void save(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -41,7 +48,7 @@ public class ContactServlet extends BaseServlet<Contact> {
         Contact contact = new Contact();
         BeanUtils.populate(contact,request.getParameterMap());
         if (service.save(contact)){
-            redirect(request,response,"content/front");
+            redirect(request,response,"contact/front");
         }else {
             forwardError(request,response,"留言信息保存失败");
         }
