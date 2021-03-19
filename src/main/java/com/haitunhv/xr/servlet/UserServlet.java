@@ -22,6 +22,7 @@ import javax.imageio.ImageIO;
 import javax.jws.WebService;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -140,6 +141,11 @@ public class UserServlet extends BaseServlet<User> {
 //            forwardError(request,response,"邮箱或密码错误");
             }
         }
+
+        Cookie cookie = new Cookie("JSESSIONID",request.getSession().getId());
+        cookie.setMaxAge(3600*24*7);
+        response.addCookie(cookie);
+
         response.getWriter().write(new ObjectMapper().writeValueAsString(result));
 
     }
