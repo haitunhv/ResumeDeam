@@ -90,16 +90,13 @@ public class ContactDaoImpl extends BaseDaoImpl<Contact> implements ContactDao {
             result.setAlreadyRead(read);
         }
         Integer pageSize = param.getPageSize();
-        if (pageSize == null){
+        if (pageSize == null || pageSize < 10){
             pageSize = 5;
         }
         String countSql = "SELECT COUNT(*) FROM contact WHERE 1=1 " + condition.toString();
-        Integer count = Dbs.getTpl().queryForObject(countSql, new RowMapper<Integer>() {
-            @Override
-            public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
-                return rs.getInt(1);
-            }
-        },ags.toArray());
+        Integer count = Dbs.getTpl().queryForObject(countSql, Integer.class,ags.toArray());
+
+        if (count == 0) return result;
         Integer totalPages = (count + pageSize -1)/pageSize;
         result.setTotalCount(totalPages);
         result.setTotalPages(count);
@@ -107,7 +104,7 @@ public class ContactDaoImpl extends BaseDaoImpl<Contact> implements ContactDao {
 
         sql.append("LIMIT ?,?");
         Integer pageNo = param.getPageNo();
-        if (pageNo == null){
+        if (pageNo == null || pageNo <1){
             pageNo = 1;
         }else if (totalPages > count){
             pageNo = 1;
