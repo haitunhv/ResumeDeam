@@ -10,6 +10,11 @@
     <typeAliases>
         <typeAlias type="com.haitunhv.common.DruidDataSourceFactory" alias="druid"/>
     </typeAliases>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
     <!-- 环境-->
     <environments default="development">
         <!-- 开发环境-->
