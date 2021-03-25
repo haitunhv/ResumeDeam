@@ -5,10 +5,15 @@
 <configuration>
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+<!--        延时加载开关-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+<!--        开启二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 <!--    别名-->
     <typeAliases>
         <typeAlias type="com.haitunhv.common.DruidDataSourceFactory" alias="druid"/>
+        <typeAlias type="com.haitunhv.bean.Skill" alias="Skill"/>
     </typeAliases>
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor">
