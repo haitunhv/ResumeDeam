@@ -5,7 +5,7 @@ import com.haitunhv.bean.Skill;
 import java.util.List;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/25 21:23
  */
 public interface SkillDao {

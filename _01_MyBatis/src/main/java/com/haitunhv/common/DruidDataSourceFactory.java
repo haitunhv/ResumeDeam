@@ -4,7 +4,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.datasource.pooled.PooledDataSourceFactory;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/22 22:20
  */
 public class DruidDataSourceFactory extends PooledDataSourceFactory {

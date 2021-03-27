@@ -5,7 +5,7 @@ import com.haitunhv.xr.bean.base.BaseBean;
 import java.util.Date;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/7 22:58
  */
 public class User extends BaseBean {

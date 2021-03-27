@@ -3,7 +3,7 @@ package com.haitunhv.xr.bean;
 import com.haitunhv.xr.bean.base.BaseBean;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/6 23:28
  */
 public class Company extends BaseBean {

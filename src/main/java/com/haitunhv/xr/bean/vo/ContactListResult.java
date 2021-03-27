@@ -5,7 +5,7 @@ import com.haitunhv.xr.bean.Contact;
 import java.util.List;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/16 23:04
  */
 public class ContactListResult extends ContactListParam {

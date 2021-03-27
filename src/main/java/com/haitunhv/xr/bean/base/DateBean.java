@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/7 14:51
  */
 public abstract class DateBean extends BaseBean {

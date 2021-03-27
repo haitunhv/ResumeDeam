@@ -5,7 +5,7 @@ import org.apache.commons.fileupload.FileItem;
 import java.util.Map;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/7 21:03
  */
 public class UploadParams {

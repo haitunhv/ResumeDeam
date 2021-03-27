@@ -3,7 +3,7 @@ package com.haitunhv.xr.bean;
 import com.haitunhv.xr.bean.base.BaseBean;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/15 23:44
  */
 public class Contact extends BaseBean {

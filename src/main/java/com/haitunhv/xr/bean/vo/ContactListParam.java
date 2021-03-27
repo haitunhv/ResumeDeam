@@ -3,7 +3,7 @@ package com.haitunhv.xr.bean.vo;
 import java.util.Date;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/16 21:42
  */
 public class ContactListParam {

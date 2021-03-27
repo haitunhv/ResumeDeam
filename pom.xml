@@ -7,9 +7,12 @@
     <groupId>com.haitunhv</groupId>
     <artifactId>ResumeDeam</artifactId>
     <version>1.0.0</version>
+    <modules>
+        <module>spring</module>
+    </modules>
 
     <!-- 打包方式   -->
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <!--    文件编码-->
     <properties>
