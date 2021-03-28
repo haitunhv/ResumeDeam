@@ -3,6 +3,26 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+<!--静态工厂-->
+<!--    <bean id="conn" class="com.haitunhv.obj.ConnectionFactory" factory-method="getConn"/>-->
+
+<!--实例工厂-->
+<!--    <bean id="factory" class="com.haitunhv.obj.ConnectionFactory">-->
+<!--        <property name="driver" value="com.mysql.jdbc.Driver"/>-->
+<!--        <property name="url" value="jdbc:mysql://localhost:3306/xr"/>-->
+<!--        <property name="username" value="root"/>-->
+<!--        <property name="password" value="root"/>-->
+<!--    </bean>-->
+<!--    <bean id="conn" factory-bean="factory" factory-method="getConn"/>-->
+
+<!--    FactoryBean-->
+    <bean id="conn" class="com.haitunhv.obj.ConnectionFactoryBean">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/xr"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
     <bean id="personDao" class="com.haitunhv.dao.impl.PersonDaoImpl" />
     <bean id="personService" class="com.haitunhv.service.impl.PersonServiceImpl">
         <property name="dao" ref="personDao"/>
