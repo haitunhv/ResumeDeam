@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--    引入db.properties-->
+    <context:property-placeholder location="db.properties"/>
 <!--静态工厂-->
 <!--    <bean id="conn" class="com.haitunhv.obj.ConnectionFactory" factory-method="getConn"/>-->
 
@@ -17,10 +23,10 @@
 
 <!--    FactoryBean-->
     <bean id="conn" class="com.haitunhv.obj.ConnectionFactoryBean">
-        <property name="driver" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/xr"/>
-        <property name="username" value="root"/>
-        <property name="password" value="root"/>
+        <property name="driver" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
     </bean>
 
     <bean id="personDao" class="com.haitunhv.dao.impl.PersonDaoImpl" />
@@ -31,4 +37,12 @@
     <bean id="personServlet" class="com.haitunhv.servlet.PersonServlet" >
         <property name="service" ref="personService" />
     </bean>
+
+    <bean id="dog" class="com.haitunhv.domain.Dog"/>
+    <bean id="person" class="com.haitunhv.domain.Person">
+        <property name="age" value="18"/>
+        <property name="name" value="jack"/>
+        <property name="dog" value="#{dog}"/>
+    </bean>
+
 </beans>
