@@ -9,6 +9,7 @@
     <version>1.0.0</version>
     <modules>
         <module>spring</module>
+        <module>springMybatis</module>
     </modules>
 
     <!-- 打包方式   -->
