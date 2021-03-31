@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <context:property-placeholder location="db.properties"/>
 
@@ -38,4 +38,20 @@
         <!-- 设置dao的包-->
         <property name="basePackage" value="com.haitunhv.dao"/>
     </bean>
+<!--    <bean id="processor" class="com.haitunhv.processor.LogProcessor"/>-->
+<!--    <bean id="processor" class="com.haitunhv.processor.LogProcessor2"/>-->
+
+    <bean id="personService" class="com.haitunhv.service.impl.PersonServiceImpl"/>
+
+<!--    附加代码-->
+<!--    <bean id="logAdvice" class="com.haitunhv.aop.LogAdvice"/>-->
+    <bean class="com.haitunhv.aop.LogInterceptor" id="interceptor"/>
+    <!-- 切面 -->
+    <aop:config>
+        <!-- 切入点：给那些类的哪些方法增加附加代码 -->
+        <!-- execution(* *(..)) 代表所有类的所有方法都会被切入 -->
+        <aop:pointcut id="pc" expression="execution(* *(..))"/>
+        <!-- 附加代码 -->
+        <aop:advisor advice-ref="interceptor" pointcut-ref="pc"/>
+    </aop:config>
 </beans>

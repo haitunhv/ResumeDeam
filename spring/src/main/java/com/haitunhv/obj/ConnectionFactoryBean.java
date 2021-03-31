@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/28 21:21
  */
 public class ConnectionFactoryBean implements FactoryBean<Connection> {

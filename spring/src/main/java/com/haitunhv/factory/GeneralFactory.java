@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/27 21:30
  */
 public class GeneralFactory {

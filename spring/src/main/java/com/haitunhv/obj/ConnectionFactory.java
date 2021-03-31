@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/28 20:30
  */
 public class ConnectionFactory {

@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/29 21:31
  */
 public class DateConverter implements Converter<String, Date> {
