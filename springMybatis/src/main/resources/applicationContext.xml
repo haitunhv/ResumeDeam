@@ -2,10 +2,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <context:property-placeholder location="db.properties"/>
 
@@ -47,11 +48,27 @@
 <!--    <bean id="logAdvice" class="com.haitunhv.aop.LogAdvice"/>-->
     <bean class="com.haitunhv.aop.LogInterceptor" id="interceptor"/>
     <!-- 切面 -->
-    <aop:config>
+<!--    <aop:config>-->
         <!-- 切入点：给那些类的哪些方法增加附加代码 -->
         <!-- execution(* *(..)) 代表所有类的所有方法都会被切入 -->
-        <aop:pointcut id="pc" expression="execution(* *(..))"/>
+<!--        <aop:pointcut id="pc" expression="execution(* *(..))"/>-->
         <!-- 附加代码 -->
-        <aop:advisor advice-ref="interceptor" pointcut-ref="pc"/>
+<!--        <aop:advisor advice-ref="interceptor" pointcut-ref="pc"/>-->
+<!--    </aop:config>-->
+
+    <!--事务管理器-->
+    <bean id="txMgr" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 附加代码 -->
+    <tx:advice id="txAdvice" transaction-manager="txMgr">
+        <tx:attributes>
+            <tx:method name="save*"/>
+        </tx:attributes>
+    </tx:advice>
+    <!-- 切面 -->
+    <aop:config>
+        <aop:pointcut id="pc" expression="within(com.haitunhv.service..*)"/>
+        <aop:advisor advice-ref="" pointcut-ref="pc"/>
     </aop:config>
 </beans>

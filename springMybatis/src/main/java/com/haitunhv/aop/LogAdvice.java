@@ -5,7 +5,7 @@ import org.springframework.aop.MethodBeforeAdvice;
 import java.lang.reflect.Method;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/3/31 22:12
  */
 public class LogAdvice implements MethodBeforeAdvice {
