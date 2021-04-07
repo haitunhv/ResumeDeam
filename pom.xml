@@ -10,6 +10,7 @@
     <modules>
         <module>spring</module>
         <module>springMybatis</module>
+        <module>springMVC</module>
     </modules>
 
     <!-- 打包方式   -->
