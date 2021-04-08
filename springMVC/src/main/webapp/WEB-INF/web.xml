@@ -17,7 +17,7 @@
 
     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
-<!--        拦截所有请求-->
+<!--        拦截jsp以外的所有请求-->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 <!--    解决POST请求参数乱码问题-->
