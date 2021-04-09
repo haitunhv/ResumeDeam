@@ -1,4 +1,4 @@
-package com.haitunhv;
+package com.haitunhv.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
