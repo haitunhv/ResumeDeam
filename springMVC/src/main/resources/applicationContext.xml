@@ -45,4 +45,18 @@
         <property name="suffix" value=".jsp"/>
         <property name="viewClass" value="com.haitunhv.view.MyView"/>
     </bean>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+<!--    异常处理-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.RuntimeException">/WEB-INF/page/error/runtime.jsp</prop>
+            </props>
+        </property>
+        <property name="exceptionAttribute" value="ex"/>
+        <property name="defaultErrorView" value="/WEB-INF/page/error/default.jsp"/>
+    </bean>
 </beans>
