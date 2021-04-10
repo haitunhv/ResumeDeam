@@ -59,4 +59,13 @@
         <property name="exceptionAttribute" value="ex"/>
         <property name="defaultErrorView" value="/WEB-INF/page/error/default.jsp"/>
     </bean>
+
+<!--   拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/**/*.html"/>
+            <bean class="com.haitunhv.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

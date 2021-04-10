@@ -6,7 +6,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/4/5 22:03
  */
 @Configuration
