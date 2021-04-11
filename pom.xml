@@ -11,6 +11,7 @@
         <module>spring</module>
         <module>springMybatis</module>
         <module>springMVC</module>
+        <module>SSM_xml</module>
     </modules>
 
     <!-- 打包方式   -->
