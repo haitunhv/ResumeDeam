@@ -22,6 +22,7 @@
         <property name="typeAliasesPackage" value="${mybatis.typeAliasesPackage}"/>
 <!--        <property name="configLocation" value="${mybatis.configLocation}"/>-->
         <property name="mapperLocations" value="${mybatis.mapperLocations}"/>
+        <property name="configLocation" value="classpath:mybatis-config.Xml"/>
     </bean>
     <!--扫描dao-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
