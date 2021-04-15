@@ -13,6 +13,7 @@
         <module>springMVC</module>
         <module>SSM_xml</module>
         <module>SSM</module>
+        <module>maven</module>
     </modules>
 
     <!-- 打包方式   -->

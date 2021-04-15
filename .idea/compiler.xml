@@ -11,6 +11,7 @@
         <module name="springMVC" />
         <module name="_01_MyBatis" />
         <module name="spring" />
+        <module name="maven" />
         <module name="springMybatis" />
       </profile>
     </annotationProcessing>
