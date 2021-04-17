@@ -1,0 +1,11 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /yml
+
+cat:
+  id: 1
+  name: miao
+
+spring:
+  profiles: dev

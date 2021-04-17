@@ -2,13 +2,33 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ResumeDeam" />
+        <module name="thymeleaf" />
+        <module name="yml" />
+        <module name="jsp" />
         <module name="_01_MyBatis" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="01_MyBatis" target="1.5" />
+      <module name="maven" target="8" />
+      <module name="spring" target="8" />
+      <module name="springMVC" target="8" />
+      <module name="springMybatis" target="8" />
+      <module name="SSM" target="8" />
+      <module name="SSM_xml" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ResumeDeam" options="-parameters" />
+      <module name="jsp" options="-parameters" />
+      <module name="thymeleaf" options="-parameters" />
+      <module name="yml" options="-parameters" />
+    </option>
   </component>
 </project>
