@@ -12,6 +12,7 @@
         <module>yml</module>
         <module>jsp</module>
         <module>thymeleaf</module>
+        <module>mybatis</module>
     </modules>
 
     <parent>
@@ -37,6 +38,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

@@ -10,6 +10,7 @@
         <module name="thymeleaf" />
         <module name="yml" />
         <module name="jsp" />
+        <module name="mybatis" />
         <module name="_01_MyBatis" />
       </profile>
     </annotationProcessing>
@@ -27,6 +28,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ResumeDeam" options="-parameters" />
       <module name="jsp" options="-parameters" />
+      <module name="mybatis" options="-parameters" />
       <module name="thymeleaf" options="-parameters" />
       <module name="yml" options="-parameters" />
     </option>
