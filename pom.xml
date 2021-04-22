@@ -13,6 +13,7 @@
         <module>jsp</module>
         <module>thymeleaf</module>
         <module>mybatis</module>
+        <module>log4j</module>
     </modules>
 
     <parent>

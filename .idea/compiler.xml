@@ -2,32 +2,30 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="thymeleaf" />
         <module name="yml" />
-        <module name="jsp" />
         <module name="mybatis" />
-        <module name="_01_MyBatis" />
+        <module name="log4j" />
+        <module name="jsp" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="01_MyBatis" target="1.5" />
-      <module name="maven" target="8" />
-      <module name="spring" target="8" />
-      <module name="springMVC" target="8" />
-      <module name="springMybatis" target="8" />
-      <module name="SSM" target="8" />
-      <module name="SSM_xml" target="8" />
+      <module name="jsp" target="1.8" />
+      <module name="log4j" target="1.8" />
+      <module name="mybatis" target="1.8" />
+      <module name="ResumeDeam" target="1.8" />
+      <module name="thymeleaf" target="1.8" />
+      <module name="yml" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="ResumeDeam" options="-parameters" />
       <module name="jsp" options="-parameters" />
+      <module name="log4j" options="-parameters" />
       <module name="mybatis" options="-parameters" />
       <module name="thymeleaf" options="-parameters" />
       <module name="yml" options="-parameters" />
