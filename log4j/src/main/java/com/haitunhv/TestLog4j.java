@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 
 /**
- * @Author: gss
+ * @Author: haitunhv
  * @Date: 2021/4/20 22:09
  */
 public class TestLog4j {

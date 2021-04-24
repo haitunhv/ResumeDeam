@@ -7,23 +7,32 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="thymeleaf" />
-        <module name="yml" />
-        <module name="mybatis" />
         <module name="log4j" />
+        <module name="mybatis" />
         <module name="jsp" />
+        <module name="SLF4J_Log4j" />
+        <module name="JCL_Log4j" />
+        <module name="yml" />
+        <module name="SlfLogback" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="JCL_Log4j" target="1.8" />
       <module name="jsp" target="1.8" />
       <module name="log4j" target="1.8" />
       <module name="mybatis" target="1.8" />
       <module name="ResumeDeam" target="1.8" />
+      <module name="SLF4J_Log4j" target="1.8" />
+      <module name="SlfLogback" target="1.8" />
       <module name="thymeleaf" target="1.8" />
       <module name="yml" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="JCL_Log4j" options="-parameters" />
+      <module name="SLF4J_Log4j" options="-parameters" />
+      <module name="SlfLogback" options="-parameters" />
       <module name="jsp" options="-parameters" />
       <module name="log4j" options="-parameters" />
       <module name="mybatis" options="-parameters" />

@@ -14,6 +14,9 @@
         <module>thymeleaf</module>
         <module>mybatis</module>
         <module>log4j</module>
+        <module>JCL_Log4j</module>
+        <module>SLF4J_Log4j</module>
+        <module>SlfLogback</module>
     </modules>
 
     <parent>
