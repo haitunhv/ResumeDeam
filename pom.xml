@@ -17,6 +17,7 @@
         <module>JCL_Log4j</module>
         <module>SLF4J_Log4j</module>
         <module>SlfLogback</module>
+        <module>log4j2</module>
     </modules>
 
     <parent>

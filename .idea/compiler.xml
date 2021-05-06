@@ -9,6 +9,7 @@
         <module name="thymeleaf" />
         <module name="log4j" />
         <module name="mybatis" />
+        <module name="log4j2" />
         <module name="jsp" />
         <module name="SLF4J_Log4j" />
         <module name="JCL_Log4j" />
@@ -20,6 +21,7 @@
       <module name="JCL_Log4j" target="1.8" />
       <module name="jsp" target="1.8" />
       <module name="log4j" target="1.8" />
+      <module name="log4j2" target="1.8" />
       <module name="mybatis" target="1.8" />
       <module name="ResumeDeam" target="1.8" />
       <module name="SLF4J_Log4j" target="1.8" />
@@ -35,6 +37,7 @@
       <module name="SlfLogback" options="-parameters" />
       <module name="jsp" options="-parameters" />
       <module name="log4j" options="-parameters" />
+      <module name="log4j2" options="-parameters" />
       <module name="mybatis" options="-parameters" />
       <module name="thymeleaf" options="-parameters" />
       <module name="yml" options="-parameters" />
