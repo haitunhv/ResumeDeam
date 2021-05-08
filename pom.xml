@@ -8,52 +8,5 @@
     <artifactId>ResumeDeam</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
-    <modules>
-        <module>yml</module>
-        <module>jsp</module>
-        <module>thymeleaf</module>
-        <module>mybatis</module>
-        <module>log4j</module>
-        <module>JCL_Log4j</module>
-        <module>SLF4J_Log4j</module>
-        <module>SlfLogback</module>
-        <module>log4j2</module>
-    </modules>
 
-    <parent>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <groupId>org.springframework.boot</groupId>
-        <version>2.3.4.RELEASE</version>
-    </parent>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-<!--        热部署-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <finalName>spring_boot</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>

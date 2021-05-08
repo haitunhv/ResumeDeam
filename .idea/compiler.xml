@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="thymeleaf" />
-        <module name="log4j" />
-        <module name="mybatis" />
-        <module name="log4j2" />
-        <module name="jsp" />
-        <module name="SLF4J_Log4j" />
-        <module name="JCL_Log4j" />
-        <module name="yml" />
-        <module name="SlfLogback" />
-      </profile>
-    </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="JCL_Log4j" target="1.8" />
       <module name="jsp" target="1.8" />
       <module name="log4j" target="1.8" />
       <module name="log4j2" target="1.8" />
       <module name="mybatis" target="1.8" />
-      <module name="ResumeDeam" target="1.8" />
+      <module name="ResumeDeam" target="1.5" />
       <module name="SLF4J_Log4j" target="1.8" />
       <module name="SlfLogback" target="1.8" />
       <module name="thymeleaf" target="1.8" />

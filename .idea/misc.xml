@@ -6,6 +6,19 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/JCL_Log4j/pom.xml" />
+        <option value="$PROJECT_DIR$/SLF4J_Log4j/pom.xml" />
+        <option value="$PROJECT_DIR$/SlfLogback/pom.xml" />
+        <option value="$PROJECT_DIR$/jsp/pom.xml" />
+        <option value="$PROJECT_DIR$/log4j/pom.xml" />
+        <option value="$PROJECT_DIR$/log4j2/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/thymeleaf/pom.xml" />
+        <option value="$PROJECT_DIR$/yml/pom.xml" />
+      </set>
+    </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/classes" />
