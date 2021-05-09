@@ -3,11 +3,12 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="JCL_Log4j" target="1.8" />
+      <module name="jiakao" target="1.8" />
       <module name="jsp" target="1.8" />
       <module name="log4j" target="1.8" />
       <module name="log4j2" target="1.8" />
       <module name="mybatis" target="1.8" />
-      <module name="ResumeDeam" target="1.5" />
+      <module name="ResumeDeam" target="1.8" />
       <module name="SLF4J_Log4j" target="1.8" />
       <module name="SlfLogback" target="1.8" />
       <module name="thymeleaf" target="1.8" />
@@ -19,6 +20,7 @@
       <module name="JCL_Log4j" options="-parameters" />
       <module name="SLF4J_Log4j" options="-parameters" />
       <module name="SlfLogback" options="-parameters" />
+      <module name="jiakao" options="-parameters" />
       <module name="jsp" options="-parameters" />
       <module name="log4j" options="-parameters" />
       <module name="log4j2" options="-parameters" />
