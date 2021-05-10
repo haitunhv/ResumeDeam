@@ -1,8 +1,7 @@
 package com.haitunhv.jk.controller;
 
-import com.haitunhv.jk.pojo.po.DictType;
-import com.haitunhv.jk.query.DictTypeQuery;
-import com.haitunhv.jk.service.DictTypeService;
+import com.haitunhv.jk.query.DictItemQuery;
+import com.haitunhv.jk.service.DictItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Date: 2021/5/8 22:01
  */
 @Controller
-@RequestMapping("/dictTypes")
-public class DictTypeController {
+@RequestMapping("/dictItems")
+public class DictItemController {
     @Autowired
-    private DictTypeService service;
+    private DictItemService service;
 
     @GetMapping("/list")
-    public String list(DictTypeQuery query, ModelMap modelMap){
+    public String list(DictItemQuery query, ModelMap modelMap){
         service.list(query);
         modelMap.addAttribute("data",query);
         return "pages/dictType";
