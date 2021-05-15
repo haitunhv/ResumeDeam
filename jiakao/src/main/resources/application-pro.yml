@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/new_jiakao?serverTimezone=GMT%2B8
+
+server:
+  port: 80
+
+jk:
+  cfg:
+    cors-origins:
+      - https://www.mj666.com
+  upload:
+    base-path: F:/new_jk/
+    upload-path: upload/
+    image-path: img/
+    video-path: video/
