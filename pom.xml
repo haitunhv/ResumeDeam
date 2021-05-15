@@ -8,6 +8,10 @@
     <artifactId>ResumeDeam</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
+    <modules>
+        <module>jiakao</module>
+        <module>jiakaoFE</module>
+    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -2,15 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/JCL_Log4j" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/SLF4J_Log4j" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/SlfLogback" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jiakao" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/jsp" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/log4j" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/log4j2" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mybatis" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/thymeleaf" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/yml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jiakaoFE" charset="UTF-8" />
   </component>
 </project>

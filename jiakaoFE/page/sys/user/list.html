@@ -1,0 +1,148 @@
+<div class="layuimini-container layuimini-page-anim">
+    <div class="layuimini-main">
+        <div>
+            <form id="search-form"
+                  class="layui-form layui-form-pane"
+                  lay-filter="search-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyword"
+                                   placeholder="昵称、用户名"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button type="button"
+                                id="reset-btn"
+                                class="layui-btn layui-btn-warm">
+                            <i class="layui-icon layui-icon-refresh"></i> 重 置 </button>
+                        <button type="submit"
+                                id="search-btn"
+                                class="layui-btn layui-btn-normal"
+                                lay-submit lay-filter="search-btn">
+                            <i class="layui-icon layui-icon-search"></i> 搜 索 </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <table class="layui-hide" id="data-table" lay-filter="data-table"></table>
+
+        <script type="text/html" id="data-toolbar">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn"
+                        lay-event="add" id="add-btn"> 添加 </button>
+                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn layui-btn-disabled"
+                        lay-event="remove" id="remove-btn"> 删除 </button>
+            </div>
+        </script>
+
+        <script type="text/html" id="data-tool">
+            <a class="layui-btn layui-btn-normal layui-btn-xs"
+               lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger"
+               lay-event="remove">删除</a>
+        </script>
+    </div>
+</div>
+
+<script src="lib/md5/md5.min.js"></script>
+<script>
+    class SysUserPage extends ListPage {
+        constructor() {
+            super({
+                title: '用户',
+                uri: 'sysUsers',
+                cols: [[
+                    {type: 'checkbox', align: 'center'},
+                    {field: 'username', title: '用户名', align: 'center'},
+                    {field: 'nickname', title: '昵称', align: 'center'},
+                    {field: 'loginTime', title: '上次登录', align: 'center',
+                        templet: (d) => {
+                            return d.loginTime
+                                ? new Date(d.loginTime).toLocaleString()
+                                : '从未登录过'
+                        }
+                    },
+                    {field: 'status', title: '状态', align: 'center',
+                        templet: (d) => {
+                            const status = (d.status === 1) ? '' : 'checked'
+                            return `<input type="checkbox" lay-text="正常|锁定" disabled lay-skin="switch" ${status}>`
+                        }
+                    },
+                    {title: '操作', minWidth: 150, toolbar: '#data-tool', align: "center"}
+                ]],
+                saveUri: 'sysUsers/save',
+                removeUri: 'sysUsers/remove',
+                savePageUri: 'page/sys/user/save.html',
+                updatePageUri: 'page/sys/user/update.html'
+            })
+        }
+
+        _removeTitle(data) {
+            return data.username
+        }
+
+        _onSumbit(field) {
+            // 密码
+            if (field.password) { // 非空串
+                // MD5加密
+                field.password = md5(field.password)
+            } else {
+                field.password = undefined
+            }
+
+            // 角色
+            field.roleIds = this._roleTransfer.selectedValue().join(',')
+            return field
+        }
+
+        _initSaveForm() {
+            super._initSaveForm()
+
+            this._loadRoles()
+        }
+
+        _loadRoles() {
+            if (this._roles) {
+                this._buildRoles()
+                return
+            }
+            Ajaxs.get({
+                uri: 'sysRoles/list',
+                success: (response) => {
+                    this._roles = response.data
+                    this._buildRoles()
+                }
+            })
+        }
+
+        _buildRoles() {
+            this._roleTransfer = new Transfer({
+                selector: '#role-transfer',
+                title: ['所有角色', '拥有角色'],
+                height: '300px'
+            })
+            this._roleTransfer.data(this._roles, (o) => {
+                return {
+                    val: o.id,
+                    text: o.name
+                }
+            })
+            if (this._editData) { // 编辑页面
+                Ajaxs.get({
+                    uri: 'sysRoles/ids',
+                    data: {
+                        userId: this._editData.id
+                    },
+                    success: (response) => {
+                        this._roleTransfer.val(response.data)
+                    }
+                })
+            }
+        }
+    }
+
+    new SysUserPage()
+</script>
